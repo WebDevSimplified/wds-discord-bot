@@ -1,7 +1,7 @@
 module.exports = [
   {
     command: `javascript-simplified-${process.env.JAVASCRIPT_SIMPLIFIED_COMMAND_NUMBERS}`,
-    roleId: "778684849107369994",
+    roleId: "777562580813873183",
     courseName: "JavaScript Simplified"
   },
   {

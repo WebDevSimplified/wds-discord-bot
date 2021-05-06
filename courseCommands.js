@@ -1,17 +1,17 @@
 module.exports = [
   {
     command: `javascript-simplified-${process.env.JAVASCRIPT_SIMPLIFIED_COMMAND_NUMBERS}`,
-    roleId: "777562580813873183",
-    courseName: "JavaScript Simplified"
+    roleId: process.env.JAVASCRIPT_SIMPLIFIED_ROLE_ID,
+    courseName: "JavaScript Simplified",
   },
   {
     command: `learn-react-today-${process.env.LEARN_REACT_TODAY_COMMAND_NUMBERS}`,
-    roleId: "583647159484678155",
-    courseName: "Learn React Today"
+    roleId: process.env.LEARN_REACT_TODAY_ROLE_ID,
+    courseName: "Learn React Today",
   },
   {
     command: `learn-css-today-${process.env.LEARN_CSS_TODAY_COMMAND_NUMBERS}`,
-    roleId: "691783626458791937",
-    courseName: "Learn CSS Today"
-  }
+    roleId: process.env.LEARN_CSS_TODAY_ROLE_ID,
+    courseName: "Learn CSS Today",
+  },
 ]

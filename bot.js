@@ -35,17 +35,33 @@ function handleCourseCommands(msg) {
 }
 
 const ROLE_UPDATE_COMMAND = `${BOT_PREFIX}update-course-roles`
-function handleAdminCommands(msg) {
+async function handleAdminCommands(msg) {
   if (msg.content !== ROLE_UPDATE_COMMAND) return
   if (msg.member.id !== process.env.OWNER_ID) return
   const roleIds = courseCommands.map(c => c.roleId)
-  const courseMembers = msg.guild.members.cache.filter(member =>
-    member.roles.cache.find(role => roleIds.includes(role.id))
-  )
+  try {
+    const members = await msg.guild.members.fetch()
+    let index = 0
+    const courseMembers = members.filter(member => {
+      console.log(`Checking roles of user ${index + 1}/${members.size}`)
+      index++
+      return (
+        member.roles.cache.find(role => roleIds.includes(role.id)) &&
+        member.roles.cache.every(
+          role => role.id !== process.env.GENERIC_COURSE_ROLE_ID
+        )
+      )
+    })
 
-  courseMembers.forEach(member =>
-    member.roles.add(process.env.GENERIC_COURSE_ROLE_ID)
-  )
+    index = 0
+    courseMembers.forEach(member => {
+      console.log(`Adding role to user ${index + 1}/${courseMembers.size}`)
+      index++
+      member.roles.add(process.env.GENERIC_COURSE_ROLE_ID)
+    })
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 client.login(process.env.BOT_TOKEN)

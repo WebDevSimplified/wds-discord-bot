@@ -1,12 +1,20 @@
 require("dotenv").config()
 
 const Discord = require("discord.js")
-const client = new Discord.Client()
+const client = new Discord.Client({
+  intents: [
+    Discord.Intents.FLAGS.GUILDS,
+    Discord.Intents.FLAGS.GUILD_MEMBERS,
+    Discord.Intents.FLAGS.GUILD_MESSAGES,
+    Discord.Intents.FLAGS.DIRECT_MESSAGES,
+    // Discord.Intents.FLAGS.MESSAGE_CONTENT,
+  ],
+})
 const courseCommands = require("./courseCommands.js")
 const roleCommands = require("./roleCommands.js")
 const BOT_PREFIX = "!wds-"
 
-client.on("message", msg => {
+client.on("messageCreate", msg => {
   if (!msg.content.startsWith(BOT_PREFIX)) return
 
   handleCourseCommands(msg)

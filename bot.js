@@ -24,8 +24,7 @@ function handleCourseCommands(msg) {
   if (role == null) return
 
   Promise.all([
-    msg.member.roles.add(role),
-    msg.member.roles.add(process.env.GENERIC_COURSE_ROLE_ID),
+    msg.member.roles.add([role, process.env.GENERIC_COURSE_ROLE_ID]),
     msg.member.send(
       `Thank you so much for your support! You have been added to the private ${courseCommand.courseName} course chat.`
     ),

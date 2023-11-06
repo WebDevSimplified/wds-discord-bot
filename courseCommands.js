@@ -16,6 +16,11 @@ module.exports = [
     courseName: "React Simplified",
   },
   {
+    command: `typescript-simplified-${process.env.TYPESCRIPT_SIMPLIFIED_COMMAND_NUMBERS}`,
+    roleId: process.env.TYPESCRIPT_SIMPLIFIED_ROLE_ID,
+    courseName: "TypeScript Simplified",
+  },
+  {
     command: `learn-css-today-${process.env.LEARN_CSS_TODAY_COMMAND_NUMBERS}`,
     roleId: process.env.LEARN_CSS_TODAY_ROLE_ID,
     courseName: "Learn CSS Today",
